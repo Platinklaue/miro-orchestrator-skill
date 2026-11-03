@@ -1,0 +1,7 @@
+{
+  "T12": {
+    "title": "Choose the art style",
+    "agent": "general-purpose",
+    "prompt": "Task T12 (Todo: needs your input). Talk with the user about the art style. Bring 3-5 concrete options with pros and cons, ask one question at a time, then record the decisions in Docs/DECISIONS.md and create todo cards (outbox create files)."
+  }
+}
