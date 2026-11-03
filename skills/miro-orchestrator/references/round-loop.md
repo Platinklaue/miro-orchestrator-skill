@@ -3,6 +3,8 @@
 ## 0. Before the round
 - Read `SLEEP_STATE.md` if it exists, the "My status" row, and the ideas inbox (1-2 Miro calls).
 - Process new ideas (see `review-cycle.md`), process answered review and design questions.
+- "Tasks for you": import every `Delivered` row from the drop folder (or its link/answer), set it
+  to Done, move its card to Review; add new rows for anything only the user can provide.
 - Check usage against the last real `/usage` numbers (see `modes-and-sleep.md`).
 
 ## 1. Plan

@@ -35,6 +35,7 @@ on the `<th data-type="select">`), and keep them when adding options later.
 | Review questions | **Verdict:** `Keep` #adf0c7 · `Tweak` #fff6b6 · `Rework` #ffc6c6 · `Not tested` #e7e7e7. **Area:** one pastel per area, e.g. `Builder` #c6dcff · `Crawl` #ffc6c6 · `World` #adf0c7 · `Menus and audio` #dedaff · `Game loop` #fff6b6. |
 | Design questions | **Status:** `Waiting for you` #ffbd83 · `Decided by Claude` #c6dcff · `On hold` #e7e7e7 · `Answered` #adf0c7. **Reversible:** `Yes - config flag` #adf0c7 · `Yes - documented default` #d5f692 · `No - on hold` #ffc6c6. **Area:** same colours as in the review table. |
 | Ideas inbox | **Status:** `New` #fff6b6 · `Read` #c6dcff · `Needs clarification` #f8d3af · `Rejected` #e7e7e7. |
+| Tasks for you | **Status:** `Open` #ffbd83 · `In progress` #fff6b6 · `Delivered` #c6dcff · `Done` #adf0c7 · `Not needed` #e7e7e7. **Type:** `Sound` #c6dcff · `Music` #dedaff · `Sprite / Art` #adf0c7 · `Voice line` #f8d3af · `Text / Writing` #fff6b6 · `Licence / Research` #ffc6c6 · `Other` #e7e7e7. **Priority:** `High` #ffc6c6 · `Medium` #fff6b6 · `Low` #e7e7e7. |
 | My status | `Present` #adf0c7 (green) · `Reachable - on the move` #fff6b6 (yellow) · `AFK` #c6dcff (blue). |
 | Claude Session Settings | Values neutral (#e7e7e7) except on/off style values: `Yes`/`Continuous` #adf0c7, `No`/`Paused` #ffc6c6. |
 

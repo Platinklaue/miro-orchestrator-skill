@@ -27,6 +27,10 @@ status, review answers, design answers and the settings. Everything else Claude 
    have looked at them.
 6. **Design questions.** Big choices. *Decided by Claude* rows are reversible defaults Claude
    picked (you can overrule them in *Your answer*); *On hold* rows wait for you.
+6b. **Tasks for you.** Things only you can provide: music, a recorded line, a specific sprite or
+   sound, a licence answer. Do the task, drop the file into the drop folder named after its ID (e.g.
+   `U01_menu_music.ogg`), write the file name or answer into *Your result* and set *Delivered*.
+   Claude imports it next round and sets it to *Done*. You can add your own rows.
 7. **Claude Session Settings.** Max workers in parallel and other knobs - change a value and Claude
    follows it from the next round.
 8. **Milestone roadmap.** Green done, yellow in progress, grey todo, with card counts.

@@ -14,6 +14,7 @@ any repository.
 - **Review questions** - one row per finished feature group with "How to test"; Claude can answer
   them itself from its own playtests (marked `[Claude playtest]`).
 - **Design questions** - big decisions, either decided reversibly by Claude or waiting for you.
+- **Tasks for you** - things only you can provide (music, a recorded line, a specific sprite, a licence answer) with a drop folder for the files.
 - **Dialog sessions** - cards that need your input get a *Session* link that opens a conversation
   with an agent that already knows the topic and brings options (Windows).
 - **My status** - *Present* (you test and decide), *Reachable* (Claude tests, you decide),

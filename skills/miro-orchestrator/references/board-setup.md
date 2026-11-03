@@ -94,6 +94,29 @@ Below it, three legend lines (see `modes-and-sleep.md` for the full rules):
 - **Reachable - on the move:** I can't playtest, but I make the design decisions. Claude playtests and answers the review questions itself; every design question goes into the Design questions table and waits for me, while Claude works on other cards.
 - **AFK:** I'm away - Claude tests and decides. Claude playtests itself, answers the review questions, makes design decisions itself (reversibly, logged as "Decided by Claude"), invents new todos and keeps working.
 
+## 4b. "Tasks for you" table + drop folder
+For things only the user can provide: music, a recorded (synchronised) voice line, a specific sprite
+or sound from a store, a licence answer, real-world research. One row per task, ID `U<nn>`.
+| Field | Type | Values / format |
+|---|---|---|
+| Task | text (title) | `U<nn> <short title>` |
+| Type | select | `Sound`, `Music`, `Sprite / Art`, `Voice line`, `Text / Writing`, `Licence / Research`, `Other` |
+| Status | select | `Open` (orange) · `In progress` · `Delivered` (blue) · `Done` (green) · `Not needed` (grey) |
+| Priority | select | `High` · `Medium` · `Low` |
+| What I need | text | exactly what, mood/style, how many |
+| Where it goes in the game | text | scene/system/card, so the user knows why |
+| Format / specs | text | file type, length/size, naming (`U01_name.ogg`), "write the source and licence" |
+| Your result | text | the user writes the file name, a link or the answer |
+| Card | text | related T-number |
+
+Instruction text above it: "Do the task, put the file into `<drop folder>` named after its ID,
+write the file name, link or answer into Your result and set Status to Delivered. Claude imports it
+next round and sets it to Done. Add your own rows too."
+Create a local **drop folder** outside the repo (e.g. `<Project>_drop/`) with a README saying the
+same. Each round read the table (filter `Status = Delivered`): import the file (right import
+settings, wire it in, credits with source + licence), set the row to Done and the linked card to
+Review. Add a row whenever Claude needs something only the user can make - instead of asking in chat.
+
 ## 5b. "Claude Session Settings" table
 Next to "My status". Columns `Setting`, `Value`, `What it does`; rows and defaults in
 `session-settings.md` (max workers at the same time, heavy tool instances, rounds, usage pause,
