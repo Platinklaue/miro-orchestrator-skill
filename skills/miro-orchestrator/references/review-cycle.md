@@ -60,3 +60,14 @@ Each round (and whenever the status note says "Check the Ideas Inbox"):
    `clarify` (question in Worker note; row set to "Needs clarification"), or `rejected` (only
    duplicates or contradictions of a recorded decision; reason in Worker note).
 6. Record the direction the ideas set (vibe, style, behaviour references) in DECISIONS.md.
+
+## Keep the board small (condense when it grows)
+- **Review table > ~15 rows:** archive every row verbatim to `Docs/PLAYTEST.md` (commit + push first),
+  process any user answers first, then replace all rows with one summary row per Area: the title
+  lists every covered T-number, "How to test" the 4-6 most important things to try, the answer
+  "[Claude summary <date>] Works: ... Needs you: ...". Coverage rule still holds: every Review card
+  is named in some row.
+- **Done column > ~20 cards:** archive the full card texts to `Docs/DONE_ARCHIVE.md`, delete the cards,
+  and keep one "Done summary: <milestone> (N tasks)" card per milestone listing T-numbers and titles.
+  Merge later Done cards into their milestone's summary card.
+- Always archive in the repo before deleting anything on the board.

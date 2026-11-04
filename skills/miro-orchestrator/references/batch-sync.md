@@ -56,3 +56,5 @@ Workers write one at start, one around halfway, one at the end. The orchestrator
 - Diagram inside a frame: send it inside the frame group with the frame rect.
 - "Measured dimensions differ" warnings in the result are harmless for tables and kanbans.
 - The MCP occasionally times out; retry once later instead of looping.
+- **A `<th>`'s text renames the column.** In every update send the real column titles ("Your answer",
+  not a short key like "answer"), or the board's column headers change.
