@@ -31,12 +31,14 @@ project-independent version; adapt names, lanes and test commands to the project
 | `references/visual-style.md` | Colours: every select option colour-coded (lanes, milestones, owner, ready, verdicts...), pastel chips, legends, roadmap colours |
 | `references/session-settings.md` | The "Claude Session Settings" table (max workers in parallel, rounds, usage pause, push/build, app closing, language...) |
 | `references/modes-and-sleep.md` | Present / Reachable / AFK (who tests, who decides), soft and hard sleep, wake-up, usage budget, machine memory |
-| `references/dialog-sessions.md` | "Todo: needs your input" cards as clickable conversation sessions (launcher scripts, tasks.json) |
+| `references/card-building.md` | How todo / in-progress / review / done cards are written, where they come from, the lifecycle, folding finished cards into summary cards, board-table cleanup |
+| `references/code-index.md` | **Optional, recommended for big repos:** SymDex local code index so you and workers fetch symbols instead of reading whole files |
+| `references/dialog-sessions.md` | "Todo: needs your input" cards as clickable conversation sessions: launcher scripts, the session builder (tasks.json prompt template), opening sessions from another device |
 | `references/batch-sync.md` | Every Miro update: outbox format, `scripts/board_batch.py`, Miro limits and gotchas |
 | `references/round-loop.md` | Running a round: plan, claim, launch, merge, verify, push, sync |
 | `references/review-cycle.md` | Review questions, self-playtests, design questions, ideas inbox |
 | `references/worker-protocol.md` | The project's `AGENT_PROTOCOL.md` and worker launch prompts |
-| `templates/` | `AGENT_PROTOCOL`, `SLEEP_STATE`, `DECISIONS` templates |
+| `templates/` | `AGENT_PROTOCOL`, `SLEEP_STATE`, `DECISIONS` templates; `task-command.md` = the project command `/task T<nn>` (copy to `.claude/commands/task.md`) for starting dialog sessions remotely |
 | `scripts/board_batch.py` | Batch tool (ingest / build / commit / status); needs `BOARD_ROOT` |
 | `scripts/dialog/` | Dialog-session launcher (Windows): `task-launcher.ps1`, `launch-task.ps1`, `install-launcher.ps1`, example `orchestrator.json` / `tasks.json` |
 | `references/usage-tracking.md` + `scripts/usage_estimate.py` | **Optional add-on:** estimate the 5-hour usage window yourself with ccusage, calibrated by the user's `/usage` readings |

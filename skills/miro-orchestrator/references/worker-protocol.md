@@ -28,6 +28,7 @@ round teaches you something (add a numbered "hygiene" rule, never a long story).
     - every heavy command inside the slot lock; one at a time; no long background chains;
     - shared scratchpad: own sub-folder `scratchpad/<worker>/` only;
     - grep before adding a public class name (two lanes adding the same class broke a merge);
+    - if the project has a code index (`code-index.md`), query it before opening big files;
     - revert pure re-serialisation noise from generated files you did not mean to change;
     - if an action is denied by the permission system, report it - do not ask the orchestrator
       to do it for you.

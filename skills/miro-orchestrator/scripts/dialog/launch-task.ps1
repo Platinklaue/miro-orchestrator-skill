@@ -9,7 +9,7 @@
 #   4. this script then ends Claude, removes the worktree and closes the window.
 #
 # Usage: powershell -ExecutionPolicy Bypass -File Tools\Workflow\launch-task.ps1 -TaskId T15
-param([Parameter(Mandatory = $true)][string]$TaskId, [switch]$DryRun)
+param([Parameter(Mandatory = $true)][string]$TaskId, [switch]$DryRun, [switch]$NoRemote)
 
 $ErrorActionPreference = 'Stop'
 $cfg = Get-Content (Join-Path $PSScriptRoot 'orchestrator.json') -Raw -Encoding UTF8 | ConvertFrom-Json
@@ -74,6 +74,11 @@ $allowed = @(
 function Quote([string]$s) { '"' + ($s -replace '\\(?=\\*")', '$0$0' -replace '"', '\"') + '"' }
 $argList = @('--agent', $task.agent, '--allowedTools') + ($allowed | ForEach-Object { Quote $_ }) +
            @('--append-system-prompt', (Quote $finish), (Quote $task.prompt))
+
+# Remote Control: the session also shows up in claude.ai/code and the Claude app (same account), so it can be
+# continued from a laptop or phone while it runs here. One-time setup: run 'claude remote-control' once in the
+# repo and answer the enable + trust prompts. -NoRemote turns it off.
+if (-not $NoRemote) { $argList = @('--remote-control', (Quote "$TaskId $($task.title)")) + $argList }
 
 $marker = Join-Path $worktree '.session-done'
 if ($DryRun) {
