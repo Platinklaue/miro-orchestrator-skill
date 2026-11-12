@@ -1,6 +1,6 @@
 ---
 name: miro-orchestrator
-description: Run a software project from a Miro board with Claude as orchestrator and parallel worker subagents in git worktrees - kanban with progress bars, ideas inbox, playtest review questions, design-question table, dialog sessions for cards that need the user, a Claude Session Settings table (max workers etc.), a "How this board works" tutorial, a milestone roadmap and a "My status" switch (Present / Reachable - on the move / AFK) plus soft-sleep and hard-sleep modes. Includes first-run setup that checks the Miro connection and walks new users through it. Use when the user wants to set up a Miro project board, run autonomous worker rounds against one, process an ideas inbox, run a playtest/review cycle, or says AFK, soft sleep, hard sleep, "wake up", or asks how the board or its modes work.
+description: Run a software project from a Miro board with Claude as orchestrator and parallel worker subagents in git worktrees - kanban with progress bars, ideas inbox, playtest review questions, design-question table, dialog sessions for cards that need the user, a Claude Session Settings table (max workers etc.), a "How this board works" tutorial, a milestone roadmap and a "My status" switch (Present / Reachable - on the move / AFK) plus soft-sleep, hard-sleep and good-night modes (good night = every session soft-sleeps, then the PC shuts down). Includes first-run setup that checks the Miro connection and walks new users through it. Use when the user wants to set up a Miro project board, run autonomous worker rounds against one, process an ideas inbox, run a playtest/review cycle, or says AFK, soft sleep, hard sleep, good night, "wake up", or asks how the board or its modes work.
 ---
 
 # Miro orchestrator loop
@@ -78,6 +78,11 @@ AFK is a *working* mode; soft and hard sleep are *stopping* modes (full table in
   written; everything stops. Takes 5-15 minutes, nothing is lost.
 - **"hard sleep" = "stop right now":** stop all workers and heavy programs at once, WIP-commit every
   worktree, release slots, write `SLEEP_STATE.md`, merge nothing. Takes under a minute.
+- **"good night" = "everyone wrap up, then turn the PC off":** tell every other Claude session on the
+  machine (ListAgents + SendMessage) to go into soft sleep, go into soft sleep yourself, collect the
+  replies, and only when every session has confirmed and nothing heavy still runs, shut the PC down
+  with a 2-minute cancel window (`shutdown /a`). Anyone who can't sleep or doesn't answer = no
+  shutdown. Steps in `modes-and-sleep.md`.
 - **"wake up":** read `SLEEP_STATE.md`, the status and settings, resume each saved worker where it
   stopped, then continue the round loop.
 - **"how does the board work?"** → explain from `board-tutorial.md`.

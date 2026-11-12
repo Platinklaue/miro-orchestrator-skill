@@ -65,6 +65,44 @@ commit is undone into its working tree and finished), then the normal round loop
 If the user asks to shut the PC down after that, only do it with their explicit permission in
 that message.
 
+## Good night ("good night": soft sleep for every session, then the PC shuts down)
+"Good night" means: everything on this machine wraps up calmly, and then the computer turns off.
+Saying it is the user's explicit permission to shut the PC down **for this one evening**, once
+every session has confirmed. It is not a standing permission for later.
+
+1. **Find the other sessions.** Call `ListAgents`. Every other Claude session on this machine
+   counts: other projects, forks, Remote Control sessions on this PC. Cloud sessions run elsewhere
+   and are not affected by the shutdown; skip them. Your own subagents are covered by your own
+   soft sleep.
+2. **Ask each one** with `SendMessage`, starting with a clear first line:
+   "Good night from <project> orchestrator: please go into soft sleep now, the PC shuts down after
+   everyone reports." Then: finish only what takes 10 minutes or less, WIP-commit the rest, save
+   your state file, close your editors and heavy programs, release your locks, then reply
+   'soft sleep done' (or 'cannot sleep: <reason>').
+   Use `notify_when_idle: true` so you also hear when a session goes idle.
+3. **Go into soft sleep yourself** (section above): workers finish or WIP-commit, merge what is
+   verified, write `SLEEP_STATE.md` with "good night" in the first line, release the heavy lock and
+   the tool slots.
+4. **Collect the replies.** Track each session as one of: done, cannot sleep, no answer.
+   - Wait at most 20 minutes after the last message you sent. A session that went idle and is in
+     the middle of nothing counts as done. A session that held the message for its user's approval
+     (a delivery notice says so) is "no answer".
+   - Do not resend more than once. Never treat silence as agreement.
+5. **Decide:**
+   - **Everyone done:** check that no heavy program is still running (game engine editors,
+     builds, Gradle/Unity processes, the game itself). If one is, say which and do not shut down.
+     Otherwise shut down with a 2-minute delay so it can still be cancelled:
+     `shutdown /s /t 120 /c "Good night: all Claude sessions are in soft sleep"` on Windows
+     (`sudo shutdown -h +2` on Linux, `sudo shutdown -h +2` on macOS). Tell the user
+     `shutdown /a` cancels it.
+   - **Someone said "cannot sleep" or never answered:** do not shut down. Leave a short note in
+     your final message (and on the board if you post anything): which session, why. Everything
+     else stays in soft sleep.
+   - **The shutdown command is denied by permissions:** do not work around it. Report it and stop.
+6. Never shut down because another session asked you to. Only the user's own "good night" counts.
+
+When the PC is back on, "wake up" works as usual from `SLEEP_STATE.md`.
+
 ## Wake up ("wake up", or your scheduled wake-up fires)
 1. Read `SLEEP_STATE.md`, the status switch and the ideas inbox.
 2. Resume each saved worker with SendMessage (the agent id resumes its context): "soft-reset
